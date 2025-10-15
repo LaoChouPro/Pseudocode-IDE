@@ -1,6 +1,6 @@
 # A-level CS 伪代码解释器
 
-完整实现的 A-level Computer Science(9618) 伪代码解释器，支持所有标准伪代码语法结构。
+完整实现的 A-level Computer Science(9618) 伪代码解释器，支持所有标准伪代码语法结构。  
 A fully implemented A-level Computer Science(9618) pseudocode interpreter that supports all standard pseudocode syntax structures.
 
 **🌐 现已支持Web版！** 
