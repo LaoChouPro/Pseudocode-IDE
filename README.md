@@ -8,10 +8,7 @@
 
 ### 方式1：Web界面（推荐）
 
-```bash
-./start_web.sh
-# 然后访问 https://code.i-o.autos
-```
+# 点击 ➡️[这里](https://code.i-o.autos)⬅️ 直接访问 [https://code.i-o.autos](https://code.i-o.autos) 开始使用
 
 详见 [WEB_README.md](WEB_README.md)
 
