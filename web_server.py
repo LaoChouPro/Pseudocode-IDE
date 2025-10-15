@@ -514,7 +514,7 @@ if __name__ == '__main__':
     print('服务器启动中...')
     print()
     print('访问地址:')
-    print('  本地: http://localhost:8080')
+    print('  线上: https://code.i-o.autos')
     print('  网络: http://0.0.0.0:8080')
     print()
     print('按 Ctrl+C 停止服务器')

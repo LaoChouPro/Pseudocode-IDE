@@ -10,7 +10,7 @@
 
 ```bash
 ./start_web.sh
-# 然后访问 http://localhost:8080
+# 然后访问 https://code.i-o.autos
 ```
 
 详见 [WEB_README.md](WEB_README.md)

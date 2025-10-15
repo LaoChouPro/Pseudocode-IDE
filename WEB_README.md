@@ -54,8 +54,9 @@ python3 web_server.py
 
 启动后，打开浏览器访问：
 
-- **本地访问**: http://localhost:8080
-- **网络访问**: http://你的IP地址:8080
+- **线上访问**: https://code.i-o.autos
+- **本地访问**: http://localhost:8080 (开发用)
+- **网络访问**: http://你的IP地址:8080 (开发用)
 
 ## 界面导航
 
