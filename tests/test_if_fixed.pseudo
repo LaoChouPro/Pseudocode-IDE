@@ -1,0 +1,9 @@
+DECLARE score : INTEGER
+score <- 75
+OUTPUT "Score:", score
+IF score >= 60
+THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Fail"
+ENDIF

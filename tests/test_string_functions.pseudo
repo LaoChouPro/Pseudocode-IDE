@@ -1,0 +1,132 @@
+// 字符串和字符函数专项测试
+OUTPUT "=== 字符串和字符函数测试 ==="
+
+// 声明变量
+DECLARE str1 : STRING
+DECLARE str2 : STRING
+DECLARE result : STRING
+DECLARE num_result : REAL
+DECLARE bool_result : BOOLEAN
+
+// 测试LEFT函数
+OUTPUT "1. LEFT函数测试"
+str1 <- 'ABCDEFGH'
+result <- LEFT(str1, 3)
+OUTPUT "LEFT('ABCDEFGH', 3) = '", result, "'  // 预期: ABC"
+
+str1 <- 'Hello'
+result <- LEFT(str1, 1)
+OUTPUT "LEFT('Hello', 1) = '", result, "'        // 预期: H"
+
+// 测试RIGHT函数
+OUTPUT "2. RIGHT函数测试"
+str1 <- 'ABCDEFGH'
+result <- RIGHT(str1, 3)
+OUTPUT "RIGHT('ABCDEFGH', 3) = '", result, "'  // 预期: FGH"
+
+str1 <- 'Hello'
+result <- RIGHT(str1, 2)
+OUTPUT "RIGHT('Hello', 2) = '", result, "'        // 预期: lo"
+
+// 测试MID函数
+OUTPUT "3. MID函数测试"
+str1 <- 'ABCDEFGH'
+result <- MID(str1, 2, 3)
+OUTPUT "MID('ABCDEFGH', 2, 3) = '", result, "'  // 预期: BCD"
+
+str1 <- 'Programming'
+result <- MID(str1, 5, 4)
+OUTPUT "MID('Programming', 5, 4) = '", result, "'  // 预期: gram"
+
+// 测试LENGTH函数
+OUTPUT "4. LENGTH函数测试"
+str1 <- 'Happy Days'
+OUTPUT "LENGTH('Happy Days') = ", LENGTH(str1), "        // 预期: 10"
+
+str1 <- 'A'
+OUTPUT "LENGTH('A') = ", LENGTH(str1), "                    // 预期: 1"
+
+str1 <- ''
+OUTPUT "LENGTH('') = ", LENGTH(str1), "                    // 预期: 0"
+
+// 测试TO_UPPER函数
+OUTPUT "5. TO_UPPER函数测试"
+str1 <- 'Error 803'
+result <- TO_UPPER(str1)
+OUTPUT "TO_UPPER('Error 803') = '", result, "'  // 预期: ERROR 803"
+
+str1 <- 'hello world'
+result <- TO_UPPER(str1)
+OUTPUT "TO_UPPER('hello world') = '", result, "'  // 预期: HELLO WORLD"
+
+// 测试TO_LOWER函数
+OUTPUT "6. TO_LOWER函数测试"
+str1 <- 'JIM 803'
+result <- TO_LOWER(str1)
+OUTPUT "TO_LOWER('JIM 803') = '", result, "'  // 预期: jim 803"
+
+str1 <- 'HELLO WORLD'
+result <- TO_LOWER(str1)
+OUTPUT "TO_LOWER('HELLO WORLD') = '", result, "'  // 预期: hello world"
+
+// 测试NUM_TO_STR函数
+OUTPUT "7. NUM_TO_STR函数测试"
+result <- NUM_TO_STR(87)
+OUTPUT "NUM_TO_STR(87) = '", result, "'          // 预期: 87"
+
+result <- NUM_TO_STR(87.5)
+OUTPUT "NUM_TO_STR(87.5) = '", result, "'        // 预期: 87.5"
+
+result <- NUM_TO_STR(-123)
+OUTPUT "NUM_TO_STR(-123) = '", result, "'        // 预期: -123"
+
+// 测试STR_TO_NUM函数
+OUTPUT "8. STR_TO_NUM函数测试"
+str1 <- '23.45'
+num_result <- STR_TO_NUM(str1)
+OUTPUT "STR_TO_NUM('23.45') = ", num_result, "    // 预期: 23.45"
+
+str1 <- '-12.36'
+num_result <- STR_TO_NUM(str1)
+OUTPUT "STR_TO_NUM('-12.36') = ", num_result, "   // 预期: -12.36"
+
+str1 <- '100'
+num_result <- STR_TO_NUM(str1)
+OUTPUT "STR_TO_NUM('100') = ", num_result, "        // 预期: 100"
+
+// 测试IS_NUM函数
+OUTPUT "9. IS_NUM函数测试"
+str1 <- '-12.36'
+bool_result <- IS_NUM(str1)
+OUTPUT "IS_NUM('-12.36') = ", bool_result, "        // 预期: TRUE"
+
+str1 <- '123'
+bool_result <- IS_NUM(str1)
+OUTPUT "IS_NUM('123') = ", bool_result, "              // 预期: TRUE"
+
+str1 <- 'hello'
+bool_result <- IS_NUM(str1)
+OUTPUT "IS_NUM('hello') = ", bool_result, "           // 预期: FALSE"
+
+str1 <- '12.34.56'
+bool_result <- IS_NUM(str1)
+OUTPUT "IS_NUM('12.34.56') = ", bool_result, "     // 预期: FALSE"
+
+// 测试ASC函数
+OUTPUT "10. ASC函数测试"
+OUTPUT "ASC('A') = ", ASC('A'), "                    // 预期: 65"
+OUTPUT "ASC('a') = ", ASC('a'), "                    // 预期: 97"
+OUTPUT "ASC('0') = ", ASC('0'), "                    // 预期: 48"
+
+// 测试CHR函数
+OUTPUT "11. CHR函数测试"
+result <- CHR(65)
+OUTPUT "CHR(65) = '", result, "'                    // 预期: A"
+
+result <- CHR(97)
+OUTPUT "CHR(97) = '", result, "'                    // 预期: a"
+
+result <- CHR(48)
+OUTPUT "CHR(48) = '", result, "'                    // 预期: 0"
+
+OUTPUT "=== 字符串和字符函数测试完成 ==="

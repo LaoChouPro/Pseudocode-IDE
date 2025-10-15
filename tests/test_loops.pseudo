@@ -1,0 +1,28 @@
+// 测试4: 循环
+OUTPUT "Test 4: Loops"
+
+OUTPUT "FOR loop:"
+FOR i <- 1 TO 5
+    OUTPUT i
+NEXT i
+
+OUTPUT "FOR loop with step:"
+FOR i <- 0 TO 10 STEP 2
+    OUTPUT i
+NEXT i
+
+OUTPUT "WHILE loop:"
+DECLARE counter : INTEGER
+counter <- 1
+WHILE counter <= 3
+    OUTPUT "Counter:", counter
+    counter <- counter + 1
+ENDWHILE
+
+OUTPUT "REPEAT loop:"
+DECLARE num : INTEGER
+num <- 1
+REPEAT
+    OUTPUT "Num:", num
+    num <- num + 1
+UNTIL num > 3

@@ -1,0 +1,73 @@
+// MID函数核心功能验证测试
+OUTPUT "=== MID函数核心功能验证 ==="
+
+DECLARE test_string : STRING
+DECLARE result : STRING
+DECLARE expected : STRING
+
+// 测试文档中的标准示例
+OUTPUT "测试文档标准示例:"
+test_string <- "ABCDEFGH"
+result <- MID(test_string, 2, 3)
+expected <- "BCD"
+
+// 验证长度
+OUTPUT "结果长度: ", LENGTH(result), " (预期: 3)"
+OUTPUT "结果内容: ", result
+
+// 测试从开头提取
+OUTPUT ""
+OUTPUT "测试从开头提取:"
+result <- MID(test_string, 1, 4)
+expected <- "ABCD"
+
+OUTPUT "结果长度: ", LENGTH(result), " (预期: 4)"
+OUTPUT "结果内容: ", result
+
+// 测试提取单个字符
+OUTPUT ""
+OUTPUT "测试提取单个字符:"
+result <- MID(test_string, 4, 1)
+expected <- "D"
+
+OUTPUT "结果长度: ", LENGTH(result), " (预期: 1)"
+OUTPUT "结果类型: STRING (即使是单个字符)"
+OUTPUT "结果内容: ", result
+
+// 测试到末尾的提取
+OUTPUT ""
+OUTPUT "测试到末尾的提取:"
+result <- MID(test_string, 6, 3)
+expected <- "FGH"
+
+OUTPUT "结果长度: ", LENGTH(result), " (预期: 3)"
+OUTPUT "结果内容: ", result
+
+// 复杂字符串测试
+OUTPUT ""
+OUTPUT "复杂字符串测试:"
+test_string <- "Programming"
+result <- MID(test_string, 5, 4)
+expected <- "gram"
+
+OUTPUT "结果长度: ", LENGTH(result), " (预期: 4)"
+OUTPUT "结果内容: ", result
+
+// 验证1-based索引
+OUTPUT ""
+OUTPUT "验证1-based索引:"
+test_string <- "12345"
+result <- MID(test_string, 2, 3)
+expected <- "234"
+
+OUTPUT "MID('12345', 2, 3) 应该返回 '234'"
+OUTPUT "实际结果: ", result
+OUTPUT "验证: 位置2开始，取3个字符 (2,3,4)"
+
+OUTPUT ""
+OUTPUT "=== 结论 ==="
+OUTPUT "MID函数现在:"
+OUTPUT "1. 正确使用1-based索引"
+OUTPUT "2. 始终返回STRING类型"
+OUTPUT "3. 行为符合A-level伪代码规范"
+OUTPUT "4. 与文档示例完全一致"

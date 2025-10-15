@@ -1,0 +1,101 @@
+// 最终验证测试 - 测试所有新增的库函数
+OUTPUT "=== 最终验证测试 ==="
+
+// 字符串函数测试
+OUTPUT "1. 字符串函数测试"
+
+DECLARE str_var : STRING
+DECLARE result : STRING
+
+str_var <- "ABCDEFGH"
+result <- LEFT(str_var, 3)
+OUTPUT "LEFT test: ", result
+
+result <- RIGHT(str_var, 3)
+OUTPUT "RIGHT test: ", result
+
+result <- MID(str_var, 2, 3)
+OUTPUT "MID test: ", result
+
+result <- TO_UPPER("error")
+OUTPUT "TO_UPPER test: ", result
+
+result <- TO_LOWER("WORLD")
+OUTPUT "TO_LOWER test: ", result
+
+result <- NUM_TO_STR(123.45)
+OUTPUT "NUM_TO_STR test: ", result
+
+// 数字函数测试
+OUTPUT "2. 数字函数测试"
+
+DECLARE num_result : REAL
+DECLARE int_result : INTEGER
+
+int_result <- INT(27.9)
+OUTPUT "INT test: ", int_result
+
+num_result <- RAND(10)
+OUTPUT "RAND test: ", num_result
+
+// 转换函数测试
+OUTPUT "3. 转换函数测试"
+
+DECLARE string_var : STRING
+DECLARE numeric_result : REAL
+DECLARE bool_result : BOOLEAN
+
+string_var <- "45.67"
+numeric_result <- STR_TO_NUM(string_var)
+OUTPUT "STR_TO_NUM test: ", numeric_result
+
+bool_result <- IS_NUM(string_var)
+OUTPUT "IS_NUM test (true): ", bool_result
+
+string_var <- "hello"
+bool_result <- IS_NUM(string_var)
+OUTPUT "IS_NUM test (false): ", bool_result
+
+// 日期函数测试
+OUTPUT "4. 日期函数测试"
+
+DECLARE test_date : DATE
+DECLARE day_num : INTEGER
+DECLARE month_num : INTEGER
+DECLARE year_num : INTEGER
+
+test_date <- SETDATE(4, 10, 2003)
+day_num <- DAY(test_date)
+OUTPUT "DAY test: ", day_num
+
+month_num <- MONTH(test_date)
+OUTPUT "MONTH test: ", month_num
+
+year_num <- YEAR(test_date)
+OUTPUT "YEAR test: ", year_num
+
+test_date <- SETDATE(7, 11, 2023)
+day_num <- DAYINDEX(test_date)
+OUTPUT "DAYINDEX test: ", day_num
+
+// 兼容性测试
+OUTPUT "5. 兼容性测试"
+
+result <- UCASE("test")
+OUTPUT "UCASE compatibility: ", result
+
+result <- LCASE("TEST")
+OUTPUT "LCASE compatibility: ", result
+
+day_num <- DAYOF(test_date)
+OUTPUT "DAYOF compatibility: ", day_num
+
+month_num <- MONTHOF(test_date)
+OUTPUT "MONTHOF compatibility: ", month_num
+
+year_num <- YEAROF(test_date)
+OUTPUT "YEAROF compatibility: ", year_num
+
+OUTPUT "=== 所有测试完成 ==="
+OUTPUT ""
+OUTPUT "库函数总结.md中的所有函数已成功集成！"

@@ -1,0 +1,28 @@
+// 测试6: 函数和过程
+OUTPUT "Test 6: Functions and Procedures"
+
+FUNCTION add(a : INTEGER, b : INTEGER) RETURNS INTEGER
+    RETURN a + b
+ENDFUNCTION
+
+FUNCTION factorial(n : INTEGER) RETURNS INTEGER
+    IF n <= 1
+        THEN
+            RETURN 1
+        ELSE
+            RETURN n * factorial(n - 1)
+    ENDIF
+ENDFUNCTION
+
+PROCEDURE greet(name : STRING)
+    OUTPUT "Hello,", name
+ENDPROCEDURE
+
+DECLARE result : INTEGER
+result <- add(5, 3)
+OUTPUT "add(5, 3) =", result
+
+result <- factorial(5)
+OUTPUT "factorial(5) =", result
+
+CALL greet("Alice")

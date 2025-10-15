@@ -1,0 +1,486 @@
+              <div class="doc-notice" style="background: #f0f9ff; border-left: 4px solid #3b82f6; padding: 12px; margin-bottom: 20px; border-radius: 4px;">
+                    <strong>📖 A-level Computer Science 伪代码完整语法规范 v2.1.0</strong><br>
+                    本文档完全符合 Cambridge International AS & A Level Computer Science (9618) 考试大纲
+                </div>
+
+                <section class="doc-section">
+                    <h3>🎯 基本数据类型</h3>
+                    <div class="doc-grid">
+                        <div class="doc-item">
+                            <strong>INTEGER</strong> - 整数类型<br>
+                            <code>123, -45, 0</code>
+                        </div>
+                        <div class="doc-item">
+                            <strong>REAL</strong> - 实数类型<br>
+                            <code>3.14, -2.5, 0.0</code>
+                        </div>
+                        <div class="doc-item">
+                            <strong>STRING</strong> - 字符串类型<br>
+                            <code>"Hello World", ""</code>
+                        </div>
+                        <div class="doc-item">
+                            <strong>CHAR</strong> - 单字符类型<br>
+                            <code>'A', 'b', '0'</code>
+                        </div>
+                        <div class="doc-item">
+                            <strong>BOOLEAN</strong> - 布尔类型<br>
+                            <code>TRUE, FALSE</code>
+                        </div>
+                        <div class="doc-item">
+                            <strong>DATE</strong> - 日期类型<br>
+                            <code>DD/MM/YYYY</code>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>📦 复合数据类型</h3>
+                    <h4>数组声明</h4>
+                    <div class="code-example">// 一维数组（支持自定义下界）
+DECLARE scores : ARRAY[1:10] OF INTEGER
+DECLARE names : ARRAY[0:4] OF STRING
+DECLARE matrix : ARRAY[1:3, 1:3] OF REAL
+
+// 数组访问
+scores[1] &lt;- 95
+names[0] &lt;- "Alice"
+matrix[2, 3] &lt;- 7.8</div>
+
+                    <h4>自定义记录类型</h4>
+                    <div class="code-example">TYPE Student
+    name : STRING
+    age : INTEGER
+    grade : REAL
+ENDTYPE
+
+DECLARE student1 : Student
+student1.name &lt;- "Alice"
+student1.age &lt;- 18
+student1.grade &lt;- 95.5</div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>📝 变量声明与赋值</h3>
+                    <div class="code-example">// 变量声明
+DECLARE x : INTEGER
+DECLARE name : STRING
+DECLARE isValid : BOOLEAN
+DECLARE numbers : ARRAY[5:15] OF INTEGER
+
+// 常量声明
+CONSTANT PI &lt;- 3.14159
+CONSTANT MAX_SIZE &lt;- 100
+
+// 赋值（使用 &lt;- 符号）
+x &lt;- 10
+name &lt;- "John"
+isValid &lt;- TRUE
+numbers[5] &lt;- 42</div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>🔀 控制结构</h3>
+
+                    <h4>IF 条件语句</h4>
+                    <div class="code-example">// 基本结构
+IF condition THEN
+    statements
+ELSE
+    statements
+ENDIF
+
+// 示例
+IF score >= 90 THEN
+    OUTPUT "A等"
+ELSEIF score >= 80 THEN
+    OUTPUT "B等"
+ELSEIF score >= 70 THEN
+    OUTPUT "C等"
+ELSE
+    OUTPUT "需要努力"
+ENDIF</div>
+
+                    <h4>CASE 选择语句</h4>
+                    <div class="code-example">CASE grade OF
+    'A' : OUTPUT "优秀"
+    'B' : OUTPUT "良好"
+    'C' : OUTPUT "及格"
+    90..100 : OUTPUT "高分段"
+    OTHERWISE : OUTPUT "不及格"
+ENDCASE</div>
+
+                    <h4>FOR 循环</h4>
+                    <div class="code-example">// 基本FOR循环
+FOR counter &lt;- start TO end [STEP step]
+    statements
+NEXT counter
+
+// 示例
+FOR i &lt;- 1 TO 10
+    OUTPUT i
+NEXT i
+
+// 倒序循环
+FOR i &lt;- 10 TO 1 STEP -1
+    OUTPUT i
+NEXT i</div>
+
+                    <h4>WHILE 循环</h4>
+                    <div class="code-example">WHILE condition
+    statements
+ENDWHILE
+
+// 示例
+WHILE counter &lt; 10
+    OUTPUT counter
+    counter &lt;- counter + 1
+ENDWHILE</div>
+
+                    <h4>REPEAT 循环</h4>
+                    <div class="code-example">REPEAT
+    statements
+UNTIL condition
+
+// 示例
+REPEAT
+    INPUT number
+    sum &lt;- sum + number
+UNTIL number = 0</div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>🔧 运算符完整列表</h3>
+
+                    <div class="operator-grid">
+                        <div class="operator-category">
+                            <h4>算术运算符</h4>
+                            <code>+  加法<br>
+-  减法<br>
+*  乘法<br>
+/  除法<br>
+^  幂运算<br>
+MOD 取模<br>
+DIV 整除</code>
+                        </div>
+
+                        <div class="operator-category">
+                            <h4>比较运算符</h4>
+                            <code>=   等于<br>
+&lt;&gt;  不等于<br>
+&lt;   小于<br>
+&gt;   大于<br>
+&lt;=  小于等于<br>
+&gt;=  大于等于</code>
+                        </div>
+
+                        <div class="operator-category">
+                            <h4>逻辑运算符</h4>
+                            <code>AND 逻辑与<br>
+OR  逻辑或<br>
+NOT 逻辑非</code>
+                        </div>
+
+                        <div class="operator-category">
+                            <h4>字符串运算</h4>
+                            <code>&amp;  字符串连接</code>
+                        </div>
+                    </div>
+
+                    <div class="priority-note">
+                        <strong>运算符优先级（从高到低）：</strong><br>
+                        () 括号 → ^ 幂 → * / → + - → 比较运算 → NOT → AND → OR
+                    </div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>📚 完整内置库函数</h3>
+
+                    <h4>字符串和字符函数</h4>
+                    <div class="function-grid">
+                        <div class="function-item">
+                            <code>LEFT(string, n)</code><br>
+                            返回字符串左侧n个字符
+                        </div>
+                        <div class="function-item">
+                            <code>RIGHT(string, n)</code><br>
+                            返回字符串右侧n个字符
+                        </div>
+                        <div class="function-item">
+                            <code>MID(string, start, length)</code><br>
+                            从位置start开始返回length个字符
+                        </div>
+                        <div class="function-item">
+                            <code>LENGTH(string)</code><br>
+                            返回字符串长度
+                        </div>
+                        <div class="function-item">
+                            <code>TO_UPPER(string)</code><br>
+                            转换为大写
+                        </div>
+                        <div class="function-item">
+                            <code>TO_LOWER(string)</code><br>
+                            转换为小写
+                        </div>
+                        <div class="function-item">
+                            <code>NUM_TO_STR(number)</code><br>
+                            数字转字符串
+                        </div>
+                        <div class="function-item">
+                            <code>STR_TO_NUM(string)</code><br>
+                            字符串转数字
+                        </div>
+                        <div class="function-item">
+                            <code>IS_NUM(string)</code><br>
+                            检查是否为有效数字字符串
+                        </div>
+                        <div class="function-item">
+                            <code>ASC(char)</code><br>
+                            返回字符的ASCII值
+                        </div>
+                        <div class="function-item">
+                            <code>CHR(code)</code><br>
+                            返回ASCII码对应的字符
+                        </div>
+                    </div>
+
+                    <h4>数学函数</h4>
+                    <div class="function-grid">
+                        <div class="function-item">
+                            <code>INT(real_number)</code><br>
+                            返回实数的整数部分
+                        </div>
+                        <div class="function-item">
+                            <code>RAND(upper_bound)</code><br>
+                            返回0到upper_bound之间的随机数
+                        </div>
+                        <div class="function-item">
+                            <code>ABS(number)</code><br>
+                            绝对值
+                        </div>
+                        <div class="function-item">
+                            <code>SQRT(number)</code><br>
+                            平方根
+                        </div>
+                    </div>
+
+                    <h4>日期函数</h4>
+                    <div class="function-grid">
+                        <div class="function-item">
+                            <code>DAY(date)</code><br>
+                            返回日期的天数
+                        </div>
+                        <div class="function-item">
+                            <code>MONTH(date)</code><br>
+                            返回日期的月份
+                        </div>
+                        <div class="function-item">
+                            <code>YEAR(date)</code><br>
+                            返回日期的年份
+                        </div>
+                        <div class="function-item">
+                            <code>DAYINDEX(date)</code><br>
+                            返回星期索引(Sunday=1)
+                        </div>
+                        <div class="function-item">
+                            <code>SETDATE(day, month, year)</code><br>
+                            创建指定日期
+                        </div>
+                        <div class="function-item">
+                            <code>TODAY()</code><br>
+                            返回当前日期
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>🔧 函数和过程</h3>
+
+                    <h4>过程定义</h4>
+                    <div class="code-example">PROCEDURE ProcedureName([parameters])
+    // 局部变量声明
+    DECLARE localVar : INTEGER
+
+    // 过程体
+    statements
+ENDPROCEDURE
+
+// 调用
+CALL ProcedureName(arg1, arg2)</div>
+
+                    <h4>函数定义</h4>
+                    <div class="code-example">FUNCTION FunctionName([parameters]) RETURNS ReturnType
+    // 局部变量
+    DECLARE result : INTEGER
+
+    // 函数体
+    statements
+
+    RETURN result
+ENDFUNCTION
+
+// 调用
+DECLARE result : INTEGER
+result &lt;- FunctionName(arg1, arg2)</div>
+
+                    <h4>参数传递</h4>
+                    <div class="code-example">// 传值调用（默认）
+PROCEDURE Example(x : INTEGER)
+    x &lt;- x + 1  // 不影响实际参数
+ENDPROCEDURE
+
+// 传引用调用
+PROCEDURE Example(BYREF x : INTEGER)
+    x &lt;- x + 1  // 影响实际参数
+ENDPROCEDURE</div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>📁 文件操作</h3>
+                    <div class="code-example">// 文件打开
+OPENFILE "data.txt" FOR READ      // 读取模式
+OPENFILE "output.txt" FOR WRITE    // 写入模式
+OPENFILE "log.txt" FOR APPEND     // 追加模式
+
+// 文件读取
+WHILE NOT EOF("data.txt")
+    READFILE "data.txt", line
+    OUTPUT line
+ENDWHILE
+
+// 文件写入
+WRITEFILE "output.txt", "Hello World"
+WRITEFILE "output.txt", score
+
+// 文件关闭
+CLOSEFILE "data.txt"
+CLOSEFILE "output.txt"</div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>⚠️ 重要语法规则</h3>
+                    <div class="rules-grid">
+                        <div class="rule-item">
+                            <strong>赋值符号</strong><br>
+                            使用 &lt;- 而不是 =
+                        </div>
+                        <div class="rule-item">
+                            <strong>字符串引号</strong><br>
+                            字符串用双引号，字符用单引号
+                        </div>
+                        <div class="rule-item">
+                            <strong>数组索引</strong><br>
+                            可自定义下界，如 ARRAY[5:10]
+                        </div>
+                        <div class="rule-item">
+                            <strong>代码块</strong><br>
+                            使用缩进表示，无花括号
+                        </div>
+                        <div class="rule-item">
+                            <strong>循环结束</strong><br>
+                            FOR循环必须用 NEXT 变量名
+                        </div>
+                        <div class="rule-item">
+                            <strong>WHILE语法</strong><br>
+                            WHILE condition ENDWHILE（无DO）
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section">
+                    <h3>📋 完整示例程序</h3>
+                    <div class="code-example">// ==========================================================
+// 学生成绩管理系统 - 完整示例
+// ==========================================================
+
+// 声明变量和常量
+CONSTANT MAX_STUDENTS &lt;- 5
+CONSTANT PASS_MARK &lt;- 60
+
+DECLARE students : ARRAY[1:MAX_STUDENTS] OF STRING
+DECLARE scores : ARRAY[1:MAX_STUDENTS] OF INTEGER
+DECLARE i, total, average : INTEGER
+DECLARE gradeCount : ARRAY[1:5] OF INTEGER
+
+// 输入学生数据
+FOR i &lt;- 1 TO MAX_STUDENTS
+    OUTPUT "请输入第", i, "个学生姓名: "
+    INPUT students[i]
+
+    OUTPUT "请输入", students[i], "的成绩: "
+    INPUT scores[i]
+NEXT i
+
+// 计算总分和平均分
+total &lt;- 0
+FOR i &lt;- 1 TO MAX_STUDENTS
+    total &lt;- total + scores[i]
+NEXT i
+average &lt;- total / MAX_STUDENTS
+
+// 统计各等级人数
+FOR i &lt;- 1 TO 5
+    gradeCount[i] &lt;- 0
+NEXT i
+
+FOR i &lt;- 1 TO MAX_STUDENTS
+    IF scores[i] >= 90 THEN
+        gradeCount[1] &lt;- gradeCount[1] + 1  // A等
+    ELSEIF scores[i] >= 80 THEN
+        gradeCount[2] &lt;- gradeCount[2] + 1  // B等
+    ELSEIF scores[i] >= 70 THEN
+        gradeCount[3] &lt;- gradeCount[3] + 1  // C等
+    ELSEIF scores[i] >= 60 THEN
+        gradeCount[4] &lt;- gradeCount[4] + 1  // D等
+    ELSE
+        gradeCount[5] &lt;- gradeCount[5] + 1  // 不及格
+    ENDIF
+NEXT i
+
+// 输出结果
+OUTPUT ""
+OUTPUT "========== 成绩统计报告 =========="
+OUTPUT "平均分: ", average
+OUTPUT ""
+OUTPUT "等级分布:"
+OUTPUT "A等(90-100): ", gradeCount[1], "人"
+OUTPUT "B等(80-89):  ", gradeCount[2], "人"
+OUTPUT "C等(70-79):  ", gradeCount[3], "人"
+OUTPUT "D等(60-69):  ", gradeCount[4], "人"
+OUTPUT "不及格(&lt;60): ", gradeCount[5], "人"
+
+// 找出最高分和最低分
+DECLARE maxScore, minScore : INTEGER
+maxScore &lt;- scores[1]
+minScore &lt;- scores[1]
+
+FOR i &lt;- 2 TO MAX_STUDENTS
+    IF scores[i] > maxScore THEN
+        maxScore &lt;- scores[i]
+    ENDIF
+    IF scores[i] < minScore THEN
+        minScore &lt;- scores[i]
+    ENDIF
+NEXT i
+
+OUTPUT ""
+OUTPUT "最高分: ", maxScore
+OUTPUT "最低分: ", minScore
+
+// 保存报告到文件
+OPENFILE "report.txt" FOR WRITE
+WRITEFILE "report.txt", "成绩统计报告"
+WRITEFILE "report.txt", "平均分: " + NUM_TO_STR(average)
+WRITEFILE "report.txt", "最高分: " + NUM_TO_STR(maxScore)
+WRITEFILE "report.txt", "最低分: " + NUM_TO_STR(minScore)
+CLOSEFILE "report.txt"
+
+OUTPUT ""
+OUTPUT "报告已保存到 report.txt"
+OUTPUT "========== 报告结束 =========="</div>
+                </section>
+
+                <div class="doc-footer" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; text-align: center; color: #6b7280;">
+                    <strong>版本信息:</strong> v2.1.0 (2025-10-15)<br>
+                    <strong>兼容性:</strong> Cambridge International AS & A Level Computer Science (9618)<br>
+                    <strong>完整支持:</strong> 所有标准伪代码语法、20+内置库函数、文件操作、用户定义函数
+                </div>

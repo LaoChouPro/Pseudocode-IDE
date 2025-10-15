@@ -1,0 +1,5 @@
+OUTPUT "Test: Loops"
+FOR i <- 1 TO 3
+    OUTPUT i
+NEXT i
+OUTPUT "Done"

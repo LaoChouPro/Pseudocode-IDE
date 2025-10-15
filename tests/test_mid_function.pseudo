@@ -1,0 +1,98 @@
+// MID函数详细测试用例
+OUTPUT "=== MID函数详细测试 ==="
+
+DECLARE test_string : STRING
+DECLARE result : STRING
+DECLARE start_pos : INTEGER
+DECLARE length : INTEGER
+
+// 测试1: 文档中的标准示例
+OUTPUT "1. 文档标准示例测试"
+test_string <- "ABCDEFGH"
+result <- MID(test_string, 2, 3)
+OUTPUT "MID('ABCDEFGH', 2, 3) = '", result, "'  // 预期: BCD"
+OUTPUT "预期结果: BCD"
+
+// 测试2: 从开头提取
+OUTPUT ""
+OUTPUT "2. 从开头提取测试"
+result <- MID(test_string, 1, 3)
+OUTPUT "MID('ABCDEFGH', 1, 3) = '", result, "'  // 预期: ABC"
+OUTPUT "预期结果: ABC"
+
+// 测试3: 从不同位置提取相同长度
+OUTPUT ""
+OUTPUT "3. 不同位置提取测试"
+result <- MID(test_string, 3, 2)
+OUTPUT "MID('ABCDEFGH', 3, 2) = '", result, "'  // 预期: CD"
+OUTPUT "预期结果: CD"
+
+result <- MID(test_string, 5, 2)
+OUTPUT "MID('ABCDEFGH', 5, 2) = '", result, "'  // 预期: EF"
+OUTPUT "预期结果: EF"
+
+// 测试4: 提取单个字符
+OUTPUT ""
+OUTPUT "4. 提取单个字符测试"
+result <- MID(test_string, 4, 1)
+OUTPUT "MID('ABCDEFGH', 4, 1) = '", result, "'  // 预期: D"
+OUTPUT "预期结果: D"
+
+// 测试5: 提取到字符串末尾
+OUTPUT ""
+OUTPUT "5. 提取到末尾测试"
+result <- MID(test_string, 6, 3)
+OUTPUT "MID('ABCDEFGH', 6, 3) = '", result, "'  // 预期: FGH"
+OUTPUT "预期结果: FGH"
+
+// 测试6: 长字符串测试
+OUTPUT ""
+OUTPUT "6. 长字符串测试"
+test_string <- "Programming"
+result <- MID(test_string, 5, 4)
+OUTPUT "MID('Programming', 5, 4) = '", result, "'  // 预期: gram"
+OUTPUT "预期结果: gram"
+
+result <- MID(test_string, 1, 7)
+OUTPUT "MID('Programming', 1, 7) = '", result, "'  // 预期: Program"
+OUTPUT "预期结果: Program"
+
+// 测试7: 边界情况测试
+OUTPUT ""
+OUTPUT "7. 边界情况测试"
+
+// 测试提取整个字符串
+test_string <- "HELLO"
+result <- MID(test_string, 1, 5)
+OUTPUT "MID('HELLO', 1, 5) = '", result, "'  // 预期: HELLO"
+OUTPUT "预期结果: HELLO"
+
+// 测试提取最后一个字符
+result <- MID(test_string, 5, 1)
+OUTPUT "MID('HELLO', 5, 1) = '", result, "'  // 预期: O"
+OUTPUT "预期结果: O"
+
+// 测试8: 不同类型字符串
+OUTPUT ""
+OUTPUT "8. 不同类型字符串测试"
+
+// 包含空格的字符串
+test_string <- "Hello World"
+result <- MID(test_string, 7, 5)
+OUTPUT "MID('Hello World', 7, 5) = '", result, "'  // 预期: World"
+OUTPUT "预期结果: World"
+
+// 包含数字的字符串
+test_string <- "ABC123XYZ"
+result <- MID(test_string, 4, 3)
+OUTPUT "MID('ABC123XYZ', 4, 3) = '", result, "'  // 预期: 123"
+OUTPUT "预期结果: 123"
+
+// 输出总结
+OUTPUT ""
+OUTPUT "=== 测试总结 ==="
+OUTPUT "请检查每个测试的实际输出是否与预期结果一致"
+OUTPUT "如果不一致，说明MID函数实现需要修正"
+
+OUTPUT ""
+OUTPUT "=== MID函数测试完成 ==="

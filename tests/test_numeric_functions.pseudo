@@ -1,0 +1,61 @@
+// 数字函数专项测试
+OUTPUT "=== 数字函数测试 ==="
+
+// 测试INT函数
+OUTPUT "1. INT函数测试"
+OUTPUT "INT(27.5415) = ", INT(27.5415), "      // 预期: 27"
+OUTPUT "INT(3.999) = ", INT(3.999), "         // 预期: 3"
+OUTPUT "INT(-2.7) = ", INT(-2.7), "           // 预期: -2"
+OUTPUT "INT(100) = ", INT(100), "            // 预期: 100"
+
+// 测试RAND函数
+OUTPUT "2. RAND函数测试"
+OUTPUT "RAND(10) 测试 (结果应该在0-10之间):"
+DECLARE i : INTEGER
+i <- 1
+WHILE i <= 5
+    OUTPUT "  测试 ", i, ": ", RAND(10)
+    i <- i + 1
+ENDWHILE
+
+OUTPUT "RAND(1) 测试 (结果应该在0-1之间):"
+i <- 1
+WHILE i <= 3
+    OUTPUT "  测试 ", i, ": ", RAND(1)
+    i <- i + 1
+ENDWHILE
+
+// 测试扩展数学函数
+OUTPUT "3. 扩展数学函数测试"
+
+// ABS函数
+OUTPUT "ABS(5) = ", ABS(5), "                // 预期: 5"
+OUTPUT "ABS(-5) = ", ABS(-5), "               // 预期: 5"
+OUTPUT "ABS(-3.14) = ", ABS(-3.14), "         // 预期: 3.14"
+
+// SQRT函数
+OUTPUT "SQRT(9) = ", SQRT(9), "               // 预期: 3"
+OUTPUT "SQRT(16) = ", SQRT(16), "             // 预期: 4"
+OUTPUT "SQRT(2) = ", SQRT(2), "               // 预期: 1.414..."
+
+// POWER函数
+OUTPUT "POWER(2, 3) = ", POWER(2, 3), "          // 预期: 8"
+OUTPUT "POWER(5, 2) = ", POWER(5, 2), "          // 预期: 25"
+OUTPUT "POWER(10, -1) = ", POWER(10, -1), "       // 预期: 0.1"
+
+// ROUND函数
+OUTPUT "ROUND(3.14159, 2) = ", ROUND(3.14159, 2), " // 预期: 3.14"
+OUTPUT "ROUND(2.71828, 0) = ", ROUND(2.71828, 0), " // 预期: 3"
+OUTPUT "ROUND(1.5) = ", ROUND(1.5), "             // 预期: 2"
+
+// MOD函数
+OUTPUT "MOD(10, 3) = ", MOD(10, 3), "           // 预期: 1"
+OUTPUT "MOD(15, 4) = ", MOD(15, 4), "           // 预期: 3"
+OUTPUT "MOD(7, 7) = ", MOD(7, 7), "             // 预期: 0"
+
+// DIV函数
+OUTPUT "DIV(10, 3) = ", DIV(10, 3), "           // 预期: 3"
+OUTPUT "DIV(15, 4) = ", DIV(15, 4), "           // 预期: 3"
+OUTPUT "DIV(7, 7) = ", DIV(7, 7), "             // 预期: 1"
+
+OUTPUT "=== 数字函数测试完成 ==="

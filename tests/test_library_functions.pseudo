@@ -1,0 +1,128 @@
+// 测试所有库函数
+OUTPUT "=== 库函数综合测试 ==="
+
+// 声明变量
+DECLARE str1 : STRING
+DECLARE str2 : STRING
+DECLARE num1 : INTEGER
+DECLARE num2 : REAL
+DECLARE result : STRING
+DECLARE num_result : REAL
+DECLARE bool_result : BOOLEAN
+DECLARE test_date : DATE
+DECLARE day_num : INTEGER
+DECLARE month_num : INTEGER
+DECLARE year_num : INTEGER
+DECLARE day_index : INTEGER
+
+// 字符串和字符函数测试
+OUTPUT "1. 字符串和字符函数测试"
+
+// LEFT函数
+str1 <- "ABCDEFGH"
+result <- LEFT(str1, 3)
+OUTPUT "LEFT(""ABCDEFGH"", 3) = """, result, """  // 应该返回 "ABC"
+
+// RIGHT函数
+result <- RIGHT(str1, 3)
+OUTPUT "RIGHT(""ABCDEFGH"", 3) = """, result, """  // 应该返回 "FGH"
+
+// MID函数
+result <- MID(str1, 2, 3)
+OUTPUT "MID(""ABCDEFGH"", 2, 3) = """, result, """  // 应该返回 "BCD"
+
+// LENGTH函数
+num1 <- LENGTH("Happy Days")
+OUTPUT "LENGTH(""Happy Days"") = ", num1, "  // 应该返回 10
+
+// TO_UPPER函数
+str2 <- "Error 803"
+result <- TO_UPPER(str2)
+OUTPUT "TO_UPPER(""Error 803"") = """, result, """  // 应该返回 "ERROR 803"
+
+// TO_LOWER函数
+str2 <- "JIM 803"
+result <- TO_LOWER(str2)
+OUTPUT "TO_LOWER(""JIM 803"") = """, result, """  // 应该返回 "jim 803"
+
+// NUM_TO_STR函数
+num1 <- 87
+result <- NUM_TO_STR(num1)
+OUTPUT "NUM_TO_STR(87) = """, result, """  // 应该返回 "87"
+
+num2 <- 87.5
+result <- NUM_TO_STR(num2)
+OUTPUT "NUM_TO_STR(87.5) = """, result, """  // 应该返回 "87.5"
+
+// STR_TO_NUM函数
+str2 <- "23.45"
+num_result <- STR_TO_NUM(str2)
+OUTPUT "STR_TO_NUM(""23.45"") = ", num_result, "  // 应该返回 23.45
+
+str2 <- "-12.36"
+num_result <- STR_TO_NUM(str2)
+OUTPUT "STR_TO_NUM(""-12.36"") = ", num_result, "  // 应该返回 -12.36
+
+// IS_NUM函数
+bool_result <- IS_NUM("-12.36")
+OUTPUT "IS_NUM(""-12.36"") = ", bool_result, "  // 应该返回 TRUE
+
+bool_result <- IS_NUM("hello")
+OUTPUT "IS_NUM(""hello"") = ", bool_result, "  // 应该返回 FALSE
+
+// ASC函数
+num1 <- ASC('A')
+OUTPUT "ASC('A') = ", num1, "  // 应该返回 65"
+
+// CHR函数
+result <- CHR(65)
+OUTPUT "CHR(65) = '", result, "'  // 应该返回 'A'
+
+// 数字函数测试
+OUTPUT ""
+OUTPUT "2. 数字函数测试"
+
+// INT函数
+num_result <- INT(27.5415)
+OUTPUT "INT(27.5415) = ", num_result, "  // 应该返回 27"
+
+// RAND函数测试
+OUTPUT "RAND(87) 测试 (结果应该小于87):"
+num1 <- 1
+WHILE num1 <= 3
+    num_result <- RAND(87)
+    OUTPUT "  测试 ", num1, ": ", num_result
+    num1 <- num1 + 1
+ENDWHILE
+
+// 日期函数测试
+OUTPUT ""
+OUTPUT "3. 日期函数测试"
+
+// SETDATE函数
+test_date <- SETDATE(4, 10, 2003)
+OUTPUT "SETDATE(4, 10, 2003) 创建日期成功"
+
+// DAY函数
+day_num <- DAY(test_date)
+OUTPUT "DAY(04/10/2003) = ", day_num, "  // 应该返回 4"
+
+// MONTH函数
+month_num <- MONTH(test_date)
+OUTPUT "MONTH(04/10/2003) = ", month_num, "  // 应该返回 10"
+
+// YEAR函数
+year_num <- YEAR(test_date)
+OUTPUT "YEAR(04/10/2003) = ", year_num, "  // 应该返回 2003"
+
+// DAYINDEX函数 (2023年11月7日是星期二)
+test_date <- SETDATE(7, 11, 2023)
+day_index <- DAYINDEX(test_date)
+OUTPUT "DAYINDEX(07/11/2023) = ", day_index, "  // 应该返回 3 (星期二)"
+
+// TODAY函数
+test_date <- TODAY()
+OUTPUT "TODAY() 返回当前日期"
+
+OUTPUT ""
+OUTPUT "=== 库函数测试完成 ==="

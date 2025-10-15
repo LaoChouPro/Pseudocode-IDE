@@ -1,0 +1,31 @@
+// 测试3: IF语句
+DECLARE score : INTEGER
+
+score <- 75
+
+OUTPUT "Test 3: IF Statement"
+OUTPUT "Score:", score
+
+IF score >= 90
+    THEN
+        OUTPUT "Grade: A"
+ENDIF
+
+IF score >= 60
+    THEN
+        OUTPUT "Pass"
+    ELSE
+        OUTPUT "Fail"
+ENDIF
+
+IF score >= 80
+    THEN
+        OUTPUT "Excellent"
+    ELSE
+        IF score >= 60
+            THEN
+                OUTPUT "Good"
+            ELSE
+                OUTPUT "Need improvement"
+        ENDIF
+ENDIF

@@ -1,0 +1,21 @@
+// 测试7: 内置函数
+OUTPUT "Test 7: Built-in Functions"
+
+DECLARE text : STRING
+DECLARE num : INTEGER
+
+text <- "Hello World"
+
+OUTPUT "String functions:"
+OUTPUT "LENGTH(text) =", LENGTH(text)
+OUTPUT "LEFT(text, 5) =", LEFT(text, 5)
+OUTPUT "RIGHT(text, 5) =", RIGHT(text, 5)
+OUTPUT "MID(text, 7, 5) =", MID(text, 7, 5)
+
+OUTPUT "Math functions:"
+OUTPUT "INT(3.7) =", INT(3.7)
+OUTPUT "ABS(-5) =", ABS(-5)
+
+DECLARE ch : CHAR
+ch <- 'A'
+OUTPUT "ASC(A) =", ASC(ch)

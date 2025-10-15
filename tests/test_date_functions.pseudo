@@ -1,0 +1,65 @@
+// 日期函数专项测试
+OUTPUT "=== 日期函数测试 ==="
+
+// 测试SETDATE函数
+OUTPUT "1. SETDATE函数测试"
+DECLARE test_date1 : DATE
+DECLARE test_date2 : DATE
+DECLARE test_date3 : DATE
+
+test_date1 <- SETDATE(4, 10, 2003)
+OUTPUT "SETDATE(4, 10, 2003) 执行成功"
+
+test_date2 <- SETDATE(26, 10, 2003)
+OUTPUT "SETDATE(26, 10, 2003) 执行成功"
+
+test_date3 <- SETDATE(7, 11, 2023)
+OUTPUT "SETDATE(7, 11, 2023) 执行成功"
+
+// 测试DAY函数
+OUTPUT "2. DAY函数测试"
+OUTPUT "DAY(04/10/2003) = ", DAY(test_date1), "          // 预期: 4"
+OUTPUT "DAY(26/10/2003) = ", DAY(test_date2), "          // 预期: 26"
+OUTPUT "DAY(07/11/2023) = ", DAY(test_date3), "          // 预期: 7"
+
+// 测试MONTH函数
+OUTPUT "3. MONTH函数测试"
+OUTPUT "MONTH(04/10/2003) = ", MONTH(test_date1), "       // 预期: 10"
+OUTPUT "MONTH(26/10/2003) = ", MONTH(test_date2), "       // 预期: 10"
+OUTPUT "MONTH(07/11/2023) = ", MONTH(test_date3), "       // 预期: 11"
+
+// 测试YEAR函数
+OUTPUT "4. YEAR函数测试"
+OUTPUT "YEAR(04/10/2003) = ", YEAR(test_date1), "         // 预期: 2003"
+OUTPUT "YEAR(26/10/2003) = ", YEAR(test_date2), "         // 预期: 2003"
+OUTPUT "YEAR(07/11/2023) = ", YEAR(test_date3), "         // 预期: 2023"
+
+// 测试DAYINDEX函数
+OUTPUT "5. DAYINDEX函数测试"
+// 2023年11月7日是星期二，应该返回3
+OUTPUT "DAYINDEX(07/11/2023) = ", DAYINDEX(test_date3), "    // 预期: 3 (星期二)"
+
+// 测试其他已知日期
+DECLARE test_sunday : DATE
+test_sunday <- SETDATE(5, 11, 2023)  // 2023年11月5日是星期日
+OUTPUT "DAYINDEX(05/11/2023) = ", DAYINDEX(test_sunday), "    // 预期: 1 (星期日)"
+
+DECLARE test_monday : DATE
+test_monday <- SETDATE(6, 11, 2023)  // 2023年11月6日是星期一
+OUTPUT "DAYINDEX(06/11/2023) = ", DAYINDEX(test_monday), "    // 预期: 2 (星期一)"
+
+// 测试TODAY函数
+OUTPUT "6. TODAY函数测试"
+DECLARE current_date : DATE
+current_date <- TODAY()
+OUTPUT "TODAY() 返回当前日期"
+
+// 测试扩展日期函数
+OUTPUT "7. 扩展日期函数测试"
+
+// 使用兼容性别名
+OUTPUT "DAYOF(04/10/2003) = ", DAYOF(test_date1), "         // 预期: 4 (兼容性别名)"
+OUTPUT "MONTHOF(04/10/2003) = ", MONTHOF(test_date1), "     // 预期: 10 (兼容性别名)"
+OUTPUT "YEAROF(04/10/2003) = ", YEAROF(test_date1), "       // 预期: 2003 (兼容性别名)"
+
+OUTPUT "=== 日期函数测试完成 ==="

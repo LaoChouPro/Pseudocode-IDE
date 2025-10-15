@@ -1,0 +1,13 @@
+// 测试1: 基本变量和赋值
+DECLARE x : INTEGER
+DECLARE y : REAL
+DECLARE name : STRING
+
+x <- 10
+y <- 3.14
+name <- "Alice"
+
+OUTPUT "Test 1: Variables"
+OUTPUT "x =", x
+OUTPUT "y =", y
+OUTPUT "name =", name

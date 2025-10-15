@@ -1,0 +1,60 @@
+// 测试新增的库函数
+OUTPUT "=== 新增库函数测试 ==="
+
+DECLARE str1 : STRING
+DECLARE result : STRING
+DECLARE num_result : REAL
+DECLARE bool_result : BOOLEAN
+DECLARE test_date : DATE
+
+// 测试TO_UPPER函数
+str1 <- "Error 803"
+result <- TO_UPPER(str1)
+OUTPUT "TO_UPPER测试: ", result
+
+// 测试TO_LOWER函数
+str1 <- "JIM 803"
+result <- TO_LOWER(str1)
+OUTPUT "TO_LOWER测试: ", result
+
+// 测试NUM_TO_STR函数
+result <- NUM_TO_STR(87.5)
+OUTPUT "NUM_TO_STR测试: ", result
+
+// 测试STR_TO_NUM函数
+str1 <- "23.45"
+num_result <- STR_TO_NUM(str1)
+OUTPUT "STR_TO_NUM测试: ", num_result
+
+// 测试IS_NUM函数
+str1 <- "-12.36"
+bool_result <- IS_NUM(str1)
+OUTPUT "IS_NUM测试(数字): ", bool_result
+
+str1 <- "hello"
+bool_result <- IS_NUM(str1)
+OUTPUT "IS_NUM测试(非数字): ", bool_result
+
+// 测试RAND函数
+num_result <- RAND(10)
+OUTPUT "RAND(10)测试: ", num_result
+
+// 测试DAY函数
+test_date <- SETDATE(4, 10, 2003)
+num_result <- DAY(test_date)
+OUTPUT "DAY测试: ", num_result
+
+// 测试MONTH函数
+num_result <- MONTH(test_date)
+OUTPUT "MONTH测试: ", num_result
+
+// 测试YEAR函数
+num_result <- YEAR(test_date)
+OUTPUT "YEAR测试: ", num_result
+
+// 测试DAYINDEX函数
+test_date <- SETDATE(7, 11, 2023)
+num_result <- DAYINDEX(test_date)
+OUTPUT "DAYINDEX测试: ", num_result
+
+OUTPUT "=== 新增库函数测试完成 ==="

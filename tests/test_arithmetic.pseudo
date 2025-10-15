@@ -1,0 +1,17 @@
+// 测试2: 算术运算
+DECLARE a : INTEGER
+DECLARE b : INTEGER
+DECLARE result : REAL
+
+a <- 10
+b <- 3
+
+OUTPUT "Test 2: Arithmetic"
+OUTPUT "a + b =", a + b
+OUTPUT "a - b =", a - b
+OUTPUT "a * b =", a * b
+OUTPUT "a / b =", a / b
+OUTPUT "a ^ 2 =", a ^ 2
+
+result <- (a + b) * 2
+OUTPUT "result =", result

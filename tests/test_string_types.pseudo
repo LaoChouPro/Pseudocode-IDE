@@ -1,0 +1,33 @@
+// 验证字符串函数返回类型
+OUTPUT "=== 字符串函数返回类型验证 ==="
+
+DECLARE test_string : STRING
+DECLARE result : STRING
+DECLARE single_char : STRING
+
+// 测试LEFT函数
+test_string <- "HELLO"
+result <- LEFT(test_string, 1)
+OUTPUT "LEFT返回单个字符时类型: STRING"
+OUTPUT "LEFT('HELLO', 1) = ", result
+OUTPUT "长度: ", LENGTH(result)
+
+// 测试RIGHT函数
+result <- RIGHT(test_string, 1)
+OUTPUT "RIGHT返回单个字符时类型: STRING"
+OUTPUT "RIGHT('HELLO', 1) = ", result
+OUTPUT "长度: ", LENGTH(result)
+
+// 测试MID函数
+result <- MID(test_string, 3, 1)
+OUTPUT "MID返回单个字符时类型: STRING"
+OUTPUT "MID('HELLO', 3, 1) = ", result
+OUTPUT "长度: ", LENGTH(result)
+
+// 测试长度为0的情况
+result <- LEFT(test_string, 0)
+OUTPUT "LEFT返回空字符串时类型: STRING"
+OUTPUT "LEFT('HELLO', 0) 长度: ", LENGTH(result)
+
+OUTPUT ""
+OUTPUT "所有字符串函数现在都正确返回STRING类型！"

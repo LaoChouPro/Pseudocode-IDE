@@ -1,0 +1,195 @@
+// A-level CS Pseudocode Grammar Definition for Lark Parser
+// 支持所有标准伪代码语法结构
+
+?start: program
+
+program: statement*
+
+?statement: declare_stmt
+          | constant_stmt
+          | type_def_stmt
+          | assign_stmt
+          | input_stmt
+          | output_stmt
+          | if_stmt
+          | case_stmt
+          | for_stmt
+          | while_stmt
+          | repeat_stmt
+          | procedure_def
+          | function_def
+          | procedure_call
+          | return_stmt
+          | file_open_stmt
+          | file_read_stmt
+          | file_write_stmt
+          | file_close_stmt
+          | comment
+
+// 声明语句
+declare_stmt: "DECLARE" identifier ":" type_spec
+
+constant_stmt: "CONSTANT" identifier "<-" expression
+
+type_def_stmt: "TYPE" NEWLINE INDENT type_body DEDENT "ENDTYPE"
+
+type_body: (declare_stmt NEWLINE)+
+
+// 类型定义
+?type_spec: simple_type
+          | array_type
+          | identifier  // 自定义类型
+
+simple_type: "INTEGER"
+           | "REAL"
+           | "STRING"
+           | "CHAR"
+           | "BOOLEAN"
+           | "DATE"
+
+array_type: "ARRAY" "[" range ("," range)? "]" "OF" type_spec
+
+range: expression ":" expression
+
+// 赋值语句
+assign_stmt: identifier_access "<-" expression
+
+identifier_access: identifier                              // 变量
+                 | identifier "[" expression "]"          // 一维数组
+                 | identifier "[" expression "," expression "]"  // 二维数组
+                 | identifier "." identifier              // 记录字段
+
+// 输入输出
+input_stmt: "INPUT" identifier_access
+
+output_stmt: ("OUTPUT"|"PRINT") output_item ("," output_item)*
+
+?output_item: expression
+
+// 控制结构 - IF语句
+if_stmt: "IF" expression NEWLINE INDENT "THEN" NEWLINE INDENT then_block DEDENT (else_part)? "ENDIF"
+       | "IF" expression "THEN" NEWLINE INDENT then_block DEDENT (else_part)? "ENDIF"
+
+then_block: statement*
+
+else_part: "ELSE" NEWLINE INDENT else_block DEDENT
+
+else_block: statement*
+
+// CASE语句
+case_stmt: "CASE" "OF" identifier NEWLINE INDENT case_branch+ (otherwise_branch)? DEDENT "ENDCASE"
+
+case_branch: case_condition ":" statement NEWLINE
+
+case_condition: expression                    // 单值匹配
+              | expression "..." expression   // 范围匹配
+
+otherwise_branch: "OTHERWISE" ":" statement NEWLINE
+
+// 循环结构
+for_stmt: "FOR" identifier "<-" expression "TO" expression (step_part)? NEWLINE INDENT loop_body DEDENT "NEXT" (identifier)?
+        | "FOR" identifier "<-" expression "TO" expression (step_part)? NEWLINE INDENT loop_body DEDENT "NEXT"
+
+step_part: "STEP" expression
+
+loop_body: statement*
+
+while_stmt: "WHILE" expression "DO" NEWLINE INDENT loop_body DEDENT "ENDWHILE"
+
+repeat_stmt: "REPEAT" NEWLINE INDENT loop_body DEDENT "UNTIL" expression
+
+// 过程定义
+procedure_def: "PROCEDURE" identifier "(" param_list? ")" NEWLINE INDENT proc_body DEDENT "ENDPROCEDURE"
+
+proc_body: statement*
+
+param_list: parameter ("," parameter)*
+
+parameter: ("BYREF")? identifier ":" type_spec
+
+// 函数定义
+function_def: "FUNCTION" identifier "(" param_list? ")" "RETURNS" type_spec NEWLINE INDENT func_body DEDENT "ENDFUNCTION"
+
+func_body: statement*
+
+return_stmt: "RETURN" expression
+
+// 过程调用
+procedure_call: "CALL" identifier "(" arg_list? ")"
+
+arg_list: expression ("," expression)*
+
+// 文件操作
+file_open_stmt: "OPEN" identifier "FOR" file_mode
+
+file_mode: "READ" | "WRITE" | "APPEND"
+
+file_read_stmt: "READFILE" identifier "," identifier_access
+
+file_write_stmt: "WRITEFILE" identifier "," expression
+
+file_close_stmt: "CLOSEFILE" identifier
+
+// 表达式（按优先级从低到高）
+?expression: logical_or
+
+?logical_or: logical_and ("OR" logical_and)*
+
+?logical_and: logical_not ("AND" logical_not)*
+
+?logical_not: "NOT" logical_not
+            | comparison
+
+?comparison: concat (comp_op concat)*
+
+comp_op: "=" | "<>" | ">" | "<" | ">=" | "<="
+
+?concat: add_sub (("&"|"+") add_sub)*  // 字符串连接
+
+?add_sub: mul_div (("+"|"-") mul_div)*
+
+?mul_div: power (("*"|"/") power)*
+
+?power: unary ("^" unary)*
+
+?unary: "-" unary
+      | "+" unary
+      | atom
+
+?atom: identifier_access
+     | function_call
+     | literal
+     | "(" expression ")"
+
+function_call: identifier "(" arg_list? ")"
+
+// 字面量
+?literal: INTEGER
+        | REAL
+        | STRING
+        | CHAR
+        | BOOLEAN
+
+BOOLEAN: "TRUE" | "FALSE"
+
+// 标识符
+identifier: NAME
+
+// 注释
+comment: "//" /[^\n]*/
+
+// 词法规则
+NAME: /[a-zA-Z][a-zA-Z0-9_]*/
+INTEGER: /[0-9]+/
+REAL: /[0-9]+\.[0-9]+/
+STRING: /"([^"\\]|\\.)*"/
+CHAR: /'([^'\\]|\\.)'/
+
+// 缩进处理
+NEWLINE: /\r?\n[\t ]*/
+INDENT: /<INDENT>/
+DEDENT: /<DEDENT>/
+
+// 忽略空白和注释
+%import common.WS_INLINE
+%ignore WS_INLINE
